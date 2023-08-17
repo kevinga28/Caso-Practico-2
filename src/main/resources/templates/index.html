@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html th:attr="lang=${lang}" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" 
+>
+
+<head th:insert="~{template.html :: head}"></head>
+
+<body>
+    <div th:insert="~{template.html :: nav}"></div>
+    <div th:insert="~{template.html :: featured-product}"></div>
+
+    <section class="container py-5">
+        <div class="row text-center pt-3">
+            <div class="col-lg-6 m-auto">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Numero de vuelo</th>
+                            <th scope="col">Destino</th>
+                            <th scope="col">Lugar de salida</th>
+                            <th scope="col">Hora de salida</th>
+                            <th scope="col">Modelo del avion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="vuelo : ${vuelos}">
+                            <td><span th:text="${vuelo.id}"></span></td>
+                           <td><span th:text="${vuelo.numero_vuelo}"></span></td>
+                              <td><span th:text="${vuelo.destino}"></span></td>
+                            <td><span th:text="${vuelo.lugar_salida}"></span></td>
+                            <td><span th:text="${vuelo.hora_salida}"></span></td>
+                              <td><span th:text="${vuelo.modelo_avion}"></span></td>
+                           
+                            
+                   
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </section>
+
+
+    <div th:insert="~{template.html :: footer}"></div>
+    <div th:insert="~{template.html :: scripts}"></div>
+
+</body>
+
+</html>
