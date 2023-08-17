@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html th:attr="lang=${lang}" 
+      xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      ​​xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+  <head>
+<head>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <!-- ! css file -->
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h3>login</h3>
+        <form action="">
+            <div class="field">
+                <i class="fa-solid fa-user"></i>
+                <input type="email" placeholder="Email or Phone">
+            </div>
+            <div class="field">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" placeholder="Password">
+            </div>
+            <a href="#">Forgot Password?</a>
+            <div class="loginCircle">
+                <button class="fa-solid fa-check"></button>
+                <!-- icons -->
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-github"></i>
+                <i class="fa-brands fa-google"></i>
+                <i class="fa-brands fa-microsoft"></i>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
