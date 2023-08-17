@@ -16,22 +16,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class VueloController {
 
     private final IVueloService vueloService;
-
-
+// Constructor que recibe una instancia de IVueloService a través de la inyección de dependencias
     public VueloController(IVueloService vueloService) {
         this.vueloService = vueloService;
-
     }
 
-    @GetMapping("/vuelo")
+    @GetMapping("/vuelo") // Maneja solicitudes GET a "/vuelo"
     public String index(Model model) {
+        var baseVuelo = new Vuelo(); // Crea una nueva instancia de Vuelo (posiblemente para inicialización)
 
-        var baseVuelo = new Vuelo();
-  
-        model.addAttribute("vueloDefault", baseVuelo);
-        model.addAttribute("vuelos", this.vueloService.getAll());
-  
-        return "vuelo";
+        model.addAttribute("vueloDefault", baseVuelo); // Agrega el objeto baseVuelo al modelo con el nombre "vueloDefault"
+        model.addAttribute("vuelos", this.vueloService.getAll()); // Agrega la lista de vuelos al modelo con el nombre "vuelos"
+
+        return "vuelo"; // Devuelve el nombre de la vista que se debe renderizar (normalmente un archivo HTML o plantilla)
     }
-
 }
