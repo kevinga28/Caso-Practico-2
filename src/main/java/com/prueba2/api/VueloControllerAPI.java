@@ -15,37 +15,38 @@ import java.util.List;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
-@RestController
-@RequestMapping("api/vuelo")
+@RestController 
+@RequestMapping("api/vuelo") 
 public class VueloControllerAPI {
     private final IVueloService vueloService;
 
+    // Constructor que recibe una instancia de IVueloService a través de las dependencias
     public VueloControllerAPI(IVueloService vueloService) {
         this.vueloService = vueloService;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/all") // Maneja solicitudes GET a "/api/vuelo/all"
     public List<Vuelo> getAll() {
-        return this.vueloService.getAll();
+        return this.vueloService.getAll(); // Llama al método getAll() de IVueloService para obtener todos los vuelos
     }
 
-    @GetMapping()
+    @GetMapping() // Maneja solicitudes GET a "/api/vuelo"
     public Vuelo getById(@RequestParam("id") int id) {
-        var vuelo = this.vueloService.getById(id);
+        var vuelo = this.vueloService.getById(id); // Llama al método getById() de IVueloService con el ID proporcionado
         if (vuelo.isPresent()) {
-            return vuelo.get();
+            return vuelo.get(); // Devuelve el vuelo si se encuentra, de lo contrario, lanza una excepción
         }
         throw new ResponseStatusException(NOT_FOUND, "Unable to find resource");
     }
 
-    @PostMapping()
+    @PostMapping() // Maneja solicitudes POST a "/api/vuelo"
     public Vuelo save(@RequestBody Vuelo vuelo) {
-        return this.vueloService.save(vuelo);
+        return this.vueloService.save(vuelo); // Llama al método save() de IVueloService para guardar el vuelo
     }
 
-    @DeleteMapping()
+    @DeleteMapping() // Maneja solicitudes DELETE a "/api/vuelo"
     public ResponseEntity<String> delete(@RequestBody Vuelo vuelo) {
-        this.vueloService.delete(vuelo);
-        return new ResponseEntity<>(HttpStatus.OK);
+        this.vueloService.delete(vuelo); // Llama al método delete() de IVueloService para eliminar el vuelo
+        return new ResponseEntity<>(HttpStatus.OK); // Devuelve una respuesta exitosa 
     }
 }
